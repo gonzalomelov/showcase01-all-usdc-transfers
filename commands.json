@@ -11,30 +11,12 @@
         "cmd": ["tsc"]
       },
       "up": {
-        "description": "Start a PG database",
+        "description": "Start a Redis instance",
         "cmd": ["docker", "compose", "up", "-d"]
       },
       "down": {
-        "description": "Drop a PG database",
+        "description": "Drop a Redis instance",
         "cmd": ["docker", "compose", "down"]
-      },
-      "migration:apply": {
-        "description": "Apply the DB migrations",
-        "cmd": ["squid-typeorm-migration", "apply"]
-      },
-      "migration:generate": {
-        "description": "Generate a DB migration matching the TypeORM entities",
-        "deps": ["build", "migration:clean"],
-        "cmd": ["squid-typeorm-migration", "generate"],
-      },
-      "migration:clean": {
-        "description": "Clean the migrations folder",
-        "cmd": ["npx", "--yes", "rimraf", "./db/migrations"],
-      },
-      "migration": {
-        "deps": ["build"],
-        "cmd": ["squid-typeorm-migration", "generate"],
-        "hidden": true
       },
       "codegen": {
         "description": "Generate TypeORM entities from the schema file",
@@ -46,12 +28,11 @@
       },
       "process": {
         "description": "Load .env and start the squid processor",
-        "deps": ["build", "migration:apply"],
+        "deps": ["build"],
         "cmd": ["node", "--require=dotenv/config", "lib/main.js"]
       },
       "process:prod": {
         "description": "Start the squid processor",
-        "deps": ["migration:apply"],
         "cmd": ["node", "lib/main.js"],
         "hidden": true
       },

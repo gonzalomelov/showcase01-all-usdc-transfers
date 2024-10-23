@@ -1,8 +1,0 @@
-type UsdcTransfer @entity {
-  id: ID!
-  block: Int!
-  from: String! @index
-  to: String! @index
-  value: BigInt!
-  txnHash: String! @index
-}
