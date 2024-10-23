@@ -27,8 +27,10 @@ sqd process
 #    being busy with fetching the chain data, 
 #    transforming and storing it in the target database.
 #
-#    To start the graphql server open the separate terminal
+#    To start Redis Insight open the separate terminal
 #    and run
-sqd serve
+open http://localhost:5540
 ```
-A GraphiQL playground will be available at [localhost:4350/graphql](http://localhost:4350/graphql).
+A Redis Insight GUI will be available at [localhost:5540](http://localhost:5540).
+
+Create a new connection by pressing "+Add Redis database" and using `redis` as host.
